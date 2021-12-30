@@ -1,0 +1,16 @@
+[Unit]
+Description=Jupyter Notebook
+After=network.target
+After=systemd-user-sessions.service
+After=network-online.target
+
+[Service]
+User=usuario_do_sistema
+Type=simple
+ExecStart=/usr/local/bin/jupyter notebook --no-browser --port=8889
+Restart= on-failure
+RestartSec=10
+WorkingDirectory=/home/usuario_do_sistema/seu_diretorio/notebooks
+
+[Install]
+WantedBy=multi-user.target
